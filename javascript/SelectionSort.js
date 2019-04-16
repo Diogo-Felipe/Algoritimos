@@ -11,15 +11,10 @@
 */
 
 function selectionSort(vetorDesordenado, inicio, fim) {
+
 	for (let i = inicio; i < fim - 1; i++) {
-
 		let menorPosicao = buscaPosicaoMenor(vetorDesordenado, i, fim);
-		let atual = vetorDesordenado[i];
-		let menor = vetorDesordenado[menorPosicao];
-
-		vetorDesordenado[menorPosicao] = atual;
-		vetorDesordenado[i] = menor;
-	
+		trocaPosicao(vetorDesordenado, menorPosicao, i);
 	}
 
 	return vetorDesordenado;
@@ -36,6 +31,14 @@ function buscaPosicaoMenor(vetorDesordenado, inicio, termino){
 		}
 	}
 	return posicaoMenor;
+}
+
+function trocaPosicao(vetor, posicaoPrimeiro, posicaoSegundo){
+	let primeiroValor = vetor[posicaoPrimeiro];
+	let segundoValor = vetor[posicaoSegundo];
+
+	vetor[posicaoPrimeiro] = segundoValor;
+	vetor[posicaoSegundo] = primeiroValor;
 }
 
 var vetorDesordenado  = [54,42,11,33,24,99,77,80];
