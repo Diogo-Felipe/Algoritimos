@@ -1,3 +1,15 @@
+//Diogo L.C. Felipe
+//diogomem@outlook.com
+
+/*
+	O Selection Sort, ou algoritomo de ordenação por seleção ordena uma serie de dados
+	da seguinte maneira:
+		1. Acha o menor valor no vetor a partir da posição 'i';
+		2. Troca esse valor com o valor que está na posição 'i';
+		3. Soma 1 na posição de inicio (i = i + 1);
+		4. Repete o algorítimo até a penultima posição do verto. 
+*/
+
 function selectionSort(vetorDesordenado, inicio, fim) {
 	for (let i = inicio; i < fim - 1; i++) {
 
@@ -27,4 +39,4 @@ function buscaPosicaoMenor(vetorDesordenado, inicio, termino){
 }
 
 var vetorDesordenado  = [54,42,11,33,24,99,77,80];
-vetorOrdenadoViaSelectionSort = selectionSort(vetorDesordenado, 0, vetorDesordenado.length);
+let vetorOrdenadoViaSelectionSort = selectionSort(vetorDesordenado, 0, vetorDesordenado.length);
