@@ -1,8 +1,7 @@
-let listaSimplesmenteEncadeada = new ListaSimplesmenteEncadeada();
+let listaDuplamenteEncadeada = new ListaDuplamenteEncadeada();
 
-listaSimplesmenteEncadeada.addInicio(1);
-listaSimplesmenteEncadeada.addFim(2);
-listaSimplesmenteEncadeada.addInicio(3);
-listaSimplesmenteEncadeada.ler();
-listaSimplesmenteEncadeada.remove(2);
-listaSimplesmenteEncadeada.ler();
+listaDuplamenteEncadeada.addInicio(1);
+listaDuplamenteEncadeada.addFim(2);
+listaDuplamenteEncadeada.addInicio(3);
+listaDuplamenteEncadeada.lerDoFim();
+listaDuplamenteEncadeada.lerDoInicio();
