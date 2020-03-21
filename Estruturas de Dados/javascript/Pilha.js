@@ -5,3 +5,9 @@ class NoPilha{
     }
 }
 
+class Pilha{
+    constructor(){
+        this.base = null;
+        this.topo = null;
+    }
+}
