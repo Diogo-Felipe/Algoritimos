@@ -23,4 +23,14 @@ class Pilha{
             this.topo = this.topo.proximo;
         }
     }
+
+    ler(){
+        let noAtual = this.topo;
+
+        console.log("Lendo Pilha");
+        while(noAtual != null){
+            console.log(noAtual.valor);
+            noAtual = noAtual.proximo;
+        }
+    }
 }
