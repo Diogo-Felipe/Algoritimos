@@ -15,4 +15,12 @@ class Pilha{
 
         this.topo = novoNo;
     }
+
+    remove(){
+        if(this.topo == null){
+            console.log("Pilha Vazia");
+        } else {
+            this.topo = this.topo.proximo;
+        }
+    }
 }
