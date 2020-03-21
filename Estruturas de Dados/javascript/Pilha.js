@@ -33,4 +33,12 @@ class Pilha{
             noAtual = noAtual.proximo;
         }
     }
+
+    esvaziar(){
+        if(this.topo == null){
+            console.log("Pilha Vazia");
+        } else {
+            this.topo = null;
+        }
+    }
 }
