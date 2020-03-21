@@ -7,7 +7,12 @@ class NoPilha{
 
 class Pilha{
     constructor(){
-        this.base = null;
         this.topo = null;
+    }
+
+    add(valor){
+        let novoNo = new NoPilha(valor, this.topo);
+
+        this.topo = novoNo;
     }
 }
