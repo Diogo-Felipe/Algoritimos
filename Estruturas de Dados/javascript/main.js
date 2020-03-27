@@ -1,7 +1,9 @@
-let listaDuplamenteEncadeada = new ListaDuplamenteEncadeada();
+let arvore = new ArvoreDeBuscaBinaria();
 
-listaDuplamenteEncadeada.addInicio(1);
-listaDuplamenteEncadeada.addFim(2);
-listaDuplamenteEncadeada.addInicio(3);
-listaDuplamenteEncadeada.lerDoFim();
-listaDuplamenteEncadeada.lerDoInicio();
+arvore.add(7);
+arvore.add(5);
+arvore.add(3);
+arvore.add(6);
+arvore.add(4);
+
+arvore.consultaPreOrdem();
