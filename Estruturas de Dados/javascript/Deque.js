@@ -1,61 +1,30 @@
-class NoDeque{
-    constructor(valor, anterior, proximo){
-        this.valor = valor;
-        this.anterior = anterior;
-        this.proximo = proximo;
-    }
-}
-
 class Deque{
     constructor(){
-        this.inicio = null;
-        this.fim = null;
+        this.deque = [];
     }
 
     addInicio(valor){
-        let novoNo = new NoDeque(valor, null, this.inicio);
-
-        if(this.inicio == null){
-            this.fim = novoNo;
-        } 
-        
-        this.inicio = novoNO;
+        this.deque.unshift(valor);
     }
 
     addFim(valor){
-        let novoNo = new NoDeque(valor, this.fim, null);
-
-        if(this.inicio == null){
-            this.inicio = novoNo;
-        } 
-        this.fim = novoNo;
+        this.deque.push(valor);
     }
 
     removeInicio(){
-        this.inicio = this.inicio.proximo;
+        this.deque.shift();
     }
 
     removeFim(){
-        this.fim = this.fim.anterior;
+        this.deque.pop();
     }
 
     lerDoInicio(){
-        let noAtual = this.inicio;
-
-        console.log("Lendo Deque do Inicio");
-        while(noAtual != null){
-            console.log(noAtual.valor);
-            noAtual = noAtual.proximo;
-        }
+        console.log(this.deque);
     }
 
     lerDoFim(){
-        let noAtual = this.fim;
-
-        console.log("Lendo Deque do Fim");
-        while(noAtual != null){
-            console.log(noAtual.anterior);
-            noAtual = noAtual.anterior;
-        }
+        let dequeCopia = this.deque.slice();
+        console.log(dequeCopia.reverse());
     }
 }
