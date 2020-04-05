@@ -13,13 +13,17 @@ class ArvoreAVL{
         this.raiz = null;
     }
 
-    add(valor, auxiliar = this.raiz){
+    add(valor){
+        this.raiz = this._insere(valor, this.raiz);
+    }
+
+    _insere(valor, auxiliar){
         if(auxiliar == null)
             auxiliar = new NoAVL(valor, null, null, 0, 0);
 
         else if (valor < auxiliar.valor){
 
-            auxiliar.esquerda = add(valor, auxiliar.esquerda);
+            auxiliar.esquerda = this._insere(valor, auxiliar.esquerda);
 
             if(auxiliar.esquerda.alturaSAD > auxiliar.esquerda.alturaSAE)
                 auxiliar.alturaSAE = auxiliar.esquerda.alturaSAD + 1;
@@ -30,7 +34,7 @@ class ArvoreAVL{
             auxiliar = this._balanceamento(auxiliar);
         } else {
 
-            auxiliar.direita = add(valor, auxiliar.direita);
+            auxiliar.direita = this._insere(valor, auxiliar.direita);
 
             if(auxiliar.direita.alturaSAD > auxiliar.direita.alturaSAE)
                 auxiliar.alturaSAD = auxiliar.direita.alturaSAD + 1;
@@ -127,4 +131,5 @@ class ArvoreAVL{
 		
 		return auxiliar1;
     }
+
 }
