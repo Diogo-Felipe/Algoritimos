@@ -293,5 +293,9 @@ class ArvoreAVL{
 		mostrarEmPosOrdem(auxiliar.direita);
 		console.log(auxiliar.valor)
 		
-	}
+    }
+    
+    esvaziar(){
+        this.raiz = null;
+    }
 }
