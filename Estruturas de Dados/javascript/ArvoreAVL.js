@@ -132,4 +132,20 @@ class ArvoreAVL{
 		return auxiliar1;
     }
 
+    consulta(valor, auxiliar = this.raiz, achou = false) {
+		
+		if(auxiliar != null && !achou) {
+			if(auxiliar.valor == valor) {
+				achou = true;
+			} else if(auxiliar.valor > valor) {
+                console.log("Esquerda");
+				achou = this.consulta(valor, auxiliar.esquerda, achou);
+			} else {
+                console.log("Direira");
+				achou = this.consulta(valor, auxiliar.direita, achou);
+			}
+		}
+		
+		return achou;
+	}
 }
