@@ -132,6 +132,128 @@ class ArvoreAVL{
 		return auxiliar1;
     }
 
+    remove(valor){
+        let auxiliar = this.raiz
+        let encontrado = false;
+
+        if(valor != this.raiz.valor){
+            let anterior = this.raiz;
+
+            while(auxiliar != null && !encontrado){
+                if(valor == auxiliar.valor){
+                    encontrado = true;
+                } else if(valor < auxiliar.valor){
+                    anterior = auxiliar;
+                    auxiliar = auxiliar.esquerda;
+                } else {
+                    anterior = auxiliar;
+                    auxiliar = auxiliar.direita;
+                }
+            }
+
+            if(auxiliar == null){
+                console.log("Elemento não existe");
+                return;
+            }
+
+            if(auxiliar.direita == null && auxiliar.esquerda == null){
+                if(anterior.esquerda == auxiliar) anterior.esquerda = null;
+                else anterior.direita = null;
+                
+            } else if(auxiliar.direita != null && auxiliar.esquerda == null){
+                if(anterior.esquerda == auxiliar) anterior.esquerda = auxiliar.direita;
+                else anterior.direita = auxiliar.direita;
+
+            } else if(auxiliar.direita == null && auxiliar.esquerda != null){
+                if(anterior.esquerda == auxiliar) anterior.esquerda = auxiliar.esquerda;
+                else anterior.direita = auxiliar.esquerda;
+
+            } else {
+                let noDireitaElementoEscluido = auxiliar.direita;
+                let noEsquerdaElementoEscluido = auxiliar.esquerda;
+                let anteriorDoAuxiliar;
+
+                if(auxiliar == anterior.direita){
+                    auxiliar = auxiliar.esquerda;
+                    while(auxiliar.direita != null){
+                        anteriorDoAuxiliar = auxiliar;
+                        auxiliar = auxiliar.direita;
+                    }
+                    anterior.direita = auxiliar;
+
+                } else {
+                    auxiliar = auxiliar.esquerda;
+                    while(auxiliar.direita != null){
+                        anteriorDoAuxiliar = auxiliar;
+                        auxiliar = auxiliar.direita;
+                    }
+                    anterior.esquerda = auxiliar;
+
+                }
+
+                auxiliar.direita = noDireitaElementoEscluido;
+                auxiliar.esquerda = noEsquerdaElementoEscluido;
+                anteriorDoAuxiliar.direita = null;
+            }
+
+        } else {
+            if(auxiliar.direita == null && auxiliar.esquerda == null) {
+                this.raiz = null;
+            } else {
+                if (auxiliar.esquerda != null && auxiliar.direita == null) 
+                    this.raiz = auxiliar.esquerda;
+                else if (auxiliar.esquerda == null && auxiliar.direita != null)
+                    this.raiz = auxiliar.direita;
+                else if (auxiliar.esquerda != null && auxiliar.direita != null) {
+                    let noDireitaElementoEscluido = this.raiz.direita;
+                    let noEsquerdaElementoEscluido = this.raiz.esquerda;
+                    let anteriorDoAuxiliar;
+                        
+                    auxiliar = this.raiz.esquerda;
+                    while(auxiliar.direita != null) {	
+                        anteriorDoAuxiliar = auxiliar;
+                        auxiliar = auxiliar.direita;
+                    }
+                    this.raiz = auxiliar;
+                        
+                    auxiliar.direita = noDireitaElementoEscluido;
+                    auxiliar.esquerda = noEsquerdaElementoEscluido;
+                    anteriorDoAuxiliar.direita = null;
+                }
+            }
+
+        }
+
+        this.raiz = this._atualiza(this.raiz);
+    }
+
+    _atualiza(auxiliar){
+
+		if(auxiliar != null){
+
+			auxiliar.esquerda = this._atualiza(auxiliar.esquerda);
+
+			if(auxiliar.esquerda == null)
+				auxiliar.alturaSAE = 0;
+			else if(auxiliar.esquerda.alturaSAE > auxiliar.esquerda.alturaSAD)
+				auxiliar.alturaSAE = auxiliar.esquerda.alturaSAE + 1;
+			else
+				auxiliar.alturaSAE = auxiliar.esquerda.alturaSAD + 1;
+
+			auxiliar.direita = this._atualiza(auxiliar.direita);
+
+			if(auxiliar.direita == null)
+				auxiliar.alturaSAD = 0;
+			else if(auxiliar.direita.alturaSAE > auxiliar.direita.alturaSAD)
+				auxiliar.alturaSAD = auxiliar.direita.alturaSAE + 1;
+			else
+				auxiliar.alturaSAD = auxiliar.direita.alturaSAD + 1;
+
+			auxiliar = this._balanceamento(auxiliar);			
+		}		
+		return auxiliar;
+	}
+
     consulta(valor, auxiliar = this.raiz, achou = false) {
 		
 		if(auxiliar != null && !achou) {
