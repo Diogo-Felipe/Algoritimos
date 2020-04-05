@@ -157,5 +157,12 @@ class ArvoreAVL{
 		
 	}
 	
+	mostrarEmOrdem(auxiliar = this.raiz) {
+		
+		mostrarEmOrdem(auxiliar.esquerda);
+		console.log(auxiliar.valor)
+		mostrarEmOrdem(auxiliar.direita);
+		
+	}
 
 }
