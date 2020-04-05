@@ -147,5 +147,15 @@ class ArvoreAVL{
 		}
 		
 		return achou;
+    }
+    
+    mostrarEmPreOrdem(auxiliar = this.raiz) {
+		
+		console.log(auxiliar.valor)
+		mostrarEmPreOrdem(auxiliar.esquerda);
+		mostrarEmPreOrdem(auxiliar.direita);
+		
 	}
+	
+
 }
